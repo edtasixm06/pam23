@@ -11,9 +11,10 @@ services:
   nfs:
     image: edtasixm06/nfs23:alpine
     container_name: nfs.edt.org
+    hostname: nfs.edt.org
     privileged: yes
     ports:
-      - "2048:2049"
+      - "2049:2049"
     volumes:
       - "data-nfs:/export"
     networks:
@@ -22,6 +23,7 @@ services:
     image: edtasixm06/pam23:latest
     container_name: pam.edt.org
     hostname: pem.edt.org
+    privileged: yes
     networks:
       - mynet
 networks:
