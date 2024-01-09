@@ -1,5 +1,5 @@
 # PAM 
-## @edt ASIX M06-ASO Curs 2022-2023
+## @edt ASIX M06-ASO Curs 2023-2024
 
 Podeu trobar les imatges docker al Dockehub de [edtasixm06](https://hub.docker.com/u/edtasixm06/)
 
@@ -14,28 +14,32 @@ ASIX M06-ASO Escola del treball de barcelona
 Exemples d'imatges per practicar PAM individualment i per practicar autnticació PAM amb ldap.
 
 
- * **edtasixm06/pam22:base** Container PAM base per practicar regles PAM. Utilitza chfn per practicar els
+ * **edtasixm06/pam23:base** Container PAM base per practicar regles PAM. Utilitza chfn per practicar els
    exmples del HowTo per aprendre el funcionament dels *type* (*auth*,*account*,*session* i*password*) i 
    dels *control* bàsics (*sufficient*, *required*,*requisite* i *optional*) i avançats (*die*, *ok*).
    També permet practicar *pam_mount.so* per muntar unitats de *tmpfs* o *NFS* als usuaris.
 
-``` 
-docker run --rm --name pam.edt.org -h pam.edt.prg --net 2hisx -it edtasixm06/pam22:base
+   ``` 
+   docker run --rm --name pam.edt.org -h pam.edt.prg --net 2hisx -it edtasixm06/pam23:base
 
-```
+   ```
 
 
- * **edtasixm06/pam22:ldap** Container PAM per practicar l'autenticació PAM unix i PAM ldap. Utilitza els paquets
+ * **edtasixm06/pam23:ldap** Container PAM per practicar l'autenticació PAM unix i PAM ldap. Utilitza els paquets
    *libpam-ldap*, *libnss-ldap*, *nscd* i *nslcd* per configurar l'accés al servei ldap i configura les regles PAM 
    per permetre tant usuaris unix com usuaris LDAP. En tots dos casos es munta en el home un recurs *tmpfs*
    temporal. En el cs dels usuaris LDAP si el seu home no existeix es crea usant *pam_mkhomedir.so*.
+   
+   **nota** aquest container és detach amb un bucle infinit amb *sleep infinity*, per treballar-hi 
+   interactivament fer un *docker exec*.
+
+   ``` 
+   docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -d edtasixm06/ldap23:latest
+   docker run --rm --name pam.edt.org  -h pam.edt.prg  --net 2hisx --privileged -d edtasixm06/pam23:ldap
+   ```
 
 
-``` 
-docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -d edtasixm06/ldap22:latest
-docker run --rm --name pam.edt.org  -h pam.edt.prg  --net 2hisx --privileged -it edtasixm06/pam22:ldap
-
-```
+---
 
  * **edtasixm06/pam21:python** host pam basat en pam20:base per practicar crear una aplicació PAM Aware i per
    crear el nostre propi mòdul de PAM. Amb l'aplicació PAM Aware pamware.py es fa un programa que mostra els 
