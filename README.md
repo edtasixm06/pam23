@@ -68,17 +68,16 @@ Exemples d'imatges per practicar PAM individualment i per practicar autnticació
    es denega l'autenticació. Per poder usar un modul pam escrit en python cal descarregar, compilar i incorporar
    com a llibreia el mòdul pam_pyhton.so.
 
+   ``` 
+   $ docker run --rm --name pam.edt.org --hostname pam.edt.org --net 2hisix -it edtasixm06/pam21:python
 
-``` 
-$ docker run --rm --name pam.edt.org --hostname pam.edt.org --net 2hisix -it edtasixm06/pam21:python
+   # Test pam_pyhton.so pam_mates.py
+   su - unix01
+   chfn
 
-# Test pam_pyhton.so pam_mates.py
-su - unix01
-chfn
-
-# Test pamwarare.py
-python3 /opt/docker/pamaware.py
-```
+   # Test pamwarare.py
+   python3 /opt/docker/pamaware.py
+   ```
 
  * **edtasixm06/pam21:homes-sshfs** host pam client de ssh que munta els homes dels usuaris via sshfs. Està 
    desenvolupat en realitat en el repositori: *edtasixm06/ssh21:sshfs*
