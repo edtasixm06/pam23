@@ -38,6 +38,24 @@ Exemples d'imatges per practicar PAM individualment i per practicar autnticació
    docker run --rm --name pam.edt.org  -h pam.edt.prg  --net 2hisx --privileged -d edtasixm06/pam23:ldap
    ```
 
+---
+
+ * **docker-compose.yml** Deesplegament dels tres continers (LDAP, PAM, NFS) en detach. Per treballar
+   en el PAM i validar el funcionament i fer proves entrar amb *docker exec*.
+
+   ```
+   $ docker-compose up -d
+   Creating network "pam23_mynet" with the default driver
+   Creating volume "pam23_data-nfs" with default driver
+   Creating ldap.edt.org ... done
+   Creating nfs.edt.org  ... done
+   Creating pam.edt.org  ... done
+   [ecanet@mylaptop pam23]$ docker ps
+   CONTAINER ID   IMAGE                      COMMAND                  CREATED         STATUS         PORTS                                       NAMES
+   71ae4195e377   edtasixm06/pam23:latest    "/bin/sh -c /opt/doc…"   4 seconds ago   Up 3 seconds                                               pam.edt.org
+   cca1a20c329b   edtasixm06/ldap23:latest   "/bin/sh -c /opt/doc…"   4 seconds ago   Up 3 seconds   0.0.0.0:389->389/tcp, :::389->389/tcp       ldap.edt.org
+   7291fce3f764   edtasixm06/nfs23:alpine    "/bin/sh -c /opt/doc…"   4 seconds ago   Up 3 seconds   0.0.0.0:2048->2049/tcp, :::2048->2049/tcp   nfs.edt.org
+   ```
 
 ---
 

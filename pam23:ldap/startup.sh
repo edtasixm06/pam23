@@ -18,7 +18,7 @@ cp /opt/docker/pam_mount.conf.xml /etc/security/pam_mount.conf.xml
 
 /usr/sbin/nscd
 /usr/sbin/nslcd
-sleep ininity
+sleep infinity
 /bin/bash
 
 

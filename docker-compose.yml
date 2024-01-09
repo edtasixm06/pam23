@@ -1,7 +1,7 @@
 version: "3"
 services:
   ldap:
-    image: edtasixm06/ldap22:latest
+    image: edtasixm06/ldap23:latest
     container_name: ldap.edt.org
     hostname: ldap.edt.org
     ports: 
@@ -19,10 +19,9 @@ services:
     networks:
       - mynet 
   pam:
-    image: edtasixm06/pam22:ldap
+    image: edtasixm06/pam23:latest
     container_name: pam.edt.org
     hostname: pem.edt.org
-    command: sleep infinity
     networks:
       - mynet
 networks:
