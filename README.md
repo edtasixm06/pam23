@@ -38,6 +38,11 @@ Exemples d'imatges per practicar PAM individualment i per practicar autnticació
    docker run --rm --name pam.edt.org  -h pam.edt.prg  --net 2hisx --privileged -d edtasixm06/pam23:ldap
    ```
 
+ * **edtasixm06/pam23:escola** Container PAM configurat com un host de l'escola, com un pc de l'aula. 
+   Autentica usuaris de l'escola i munta dins el seu home el recurs de xarxa de *WebDav* de cada usuari com
+   a unitat de xarxa.
+
+
 ---
 
  * **docker-compose.yml** Deesplegament dels tres continers (LDAP, PAM, NFS) en detach. Per treballar
@@ -84,6 +89,4 @@ Exemples d'imatges per practicar PAM individualment i per practicar autnticació
 
  * **edtasixm06/pam19:nfs** host pam client que munta el home dels usuaris via nfs. Utilitza el servidor nfs
    desenvolupat en el repositori: nfs19:pam (aquest és el server nfs).
-
-
 
